@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard อัตราการใช้น้ำมันและจาระบี</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Dashboard อัตราการใช้น้ำมัน + จาระบี</h1>
+    <p>ระบบสายพานลำเลียง Conveyor Lubrication Consumption</p>
+  </header>
+
+  <section class="filters">
+    <label>เดือน:
+      <select id="monthFilter"></select>
+    </label>
+    <label>ระบบ:
+      <select id="systemFilter"></select>
+    </label>
+    <label>ประเภท:
+      <select id="typeFilter">
+        <option value="All">ทั้งหมด</option>
+        <option value="Oil">Oil</option>
+        <option value="Grease">Grease</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="kpi-grid">
+    <div class="card">
+      <h3>Oil Usage</h3>
+      <p id="oilUsage">0 L</p>
+    </div>
+    <div class="card">
+      <h3>Grease Usage</h3>
+      <p id="greaseUsage">0 kg</p>
+    </div>
+    <div class="card">
+      <h3>Actual vs Plan</h3>
+      <p id="actualVsPlan">0%</p>
+    </div>
+    <div class="card">
+      <h3>Stock Days Remaining</h3>
+      <p id="stockDays">0 วัน</p>
+    </div>
+  </section>
+
+  <main class="dashboard-grid">
+    <div class="chart-card">
+      <h2>Monthly Trend</h2>
+      <canvas id="monthlyChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h2>Oil vs Grease</h2>
+      <canvas id="typeChart"></canvas>
+    </div>
+    <div class="chart-card wide">
+      <h2>Top Equipment ใช้งานสูงสุด</h2>
+      <canvas id="equipmentChart"></canvas>
+    </div>
+  </main>
+
+  <section class="table-card">
+    <h2>Lubrication Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>ระบบ</th>
+          <th>Equipment</th>
+          <th>Point</th>
+          <th>Type</th>
+          <th>Lubricant</th>
+          <th>Qty</th>
+          <th>Stock</th>
+          <th>Plan</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="dataTable"></tbody>
+    </table>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
